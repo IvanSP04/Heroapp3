@@ -8,11 +8,11 @@ import User from "./pages/User";
 import SplashScreen from "./components/SplashScreen";
 
 const TABS = [
-  { id: "home",      label: "🏠 Inicio" },
-  { id: "favorites", label: "♥ Favoritos" },
-  { id: "battle",    label: "⚔ Batalla" },
-  { id: "user",      label: "👤 Perfil" },
-  { id: "info",      label: "ℹ Info" },
+  { id: "home",      label: "INICIO" },
+  { id: "favorites", label: "FAVORITOS" },
+  { id: "battle",    label: "BATALLA" },
+  { id: "user",      label: "PERFIL" },
+  { id: "info",      label: "INFO" },
 ];
 
 function AppContent() {

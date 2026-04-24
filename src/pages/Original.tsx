@@ -35,6 +35,7 @@ export default function Original() {
   const stats1   = hero1?.powerstats ?? {};
   const stats2   = hero2?.powerstats ?? {};
   const statKeys = Object.keys({ ...stats1, ...stats2 });
+
   const winnerName =
     result === "h1" ? hero1?.name :
     result === "h2" ? hero2?.name : "Empate";
@@ -43,12 +44,12 @@ export default function Original() {
     <>
       <div className="home-header">
         <h1>Batalla</h1>
-        <p>Selecciona dos héroes y compara sus estadísticas</p>
+        <p>Selecciona dos heroes y compara sus estadisticas</p>
       </div>
 
       <div className="battle-selectors">
         <div className="battle-selector-wrap">
-          <label>// HÉROE 1</label>
+          <label>// HEROE 1</label>
           <select className="filter-select" value={hero1Id}
             onChange={(e) => { setHero1Id(e.target.value); setResult(null); }}>
             <option value="">Seleccionar...</option>
@@ -61,7 +62,7 @@ export default function Original() {
                   e.currentTarget.src = "https://placehold.co/80x110?text=?";
                 }} />
               <span>{hero1.name}</span>
-              <span style={{ color: "var(--accent)" }}>⚡ {totalPower(hero1)}</span>
+              <span style={{ color: "var(--accent)" }}>{totalPower(hero1)} pts</span>
             </div>
           )}
         </div>
@@ -69,7 +70,7 @@ export default function Original() {
         <div className="vs-divider">VS</div>
 
         <div className="battle-selector-wrap">
-          <label>// HÉROE 2</label>
+          <label>// HEROE 2</label>
           <select className="filter-select" value={hero2Id}
             onChange={(e) => { setHero2Id(e.target.value); setResult(null); }}>
             <option value="">Seleccionar...</option>
@@ -82,7 +83,7 @@ export default function Original() {
                   e.currentTarget.src = "https://placehold.co/80x110?text=?";
                 }} />
               <span>{hero2.name}</span>
-              <span style={{ color: "var(--accent)" }}>⚡ {totalPower(hero2)}</span>
+              <span style={{ color: "var(--accent)" }}>{totalPower(hero2)} pts</span>
             </div>
           )}
         </div>
@@ -90,7 +91,7 @@ export default function Original() {
 
       {hero1 && hero2 && (
         <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <button className="battle-btn" onClick={runBattle}>⚡ INICIAR BATALLA</button>
+          <button className="battle-btn" onClick={runBattle}>INICIAR BATALLA</button>
         </div>
       )}
 
@@ -98,7 +99,7 @@ export default function Original() {
         <div className="battle-result">
           <div className={`winner-banner ${result === "tie" ? "tie" : ""}`}>
             {result === "tie"
-              ? "// EMPATE — estadísticas idénticas"
+              ? "// EMPATE"
               : <>// GANADOR: <strong>{winnerName}</strong> <span>por diferencia de puntos de poder</span></>
             }
           </div>

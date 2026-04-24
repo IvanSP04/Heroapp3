@@ -39,11 +39,15 @@ export default function User() {
         <div className="user-name-display">
           {editing ? (
             <div className="user-name-edit">
-              <input className="search-input" value={draft} autoFocus
+              <input
+                className="search-input"
+                value={draft}
+                autoFocus
                 placeholder="Tu nombre..."
                 style={{ maxWidth: 200 }}
                 onChange={(e) => setDraft(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && saveName()} />
+                onKeyDown={(e) => e.key === "Enter" && saveName()}
+              />
               <button className="battle-btn" onClick={saveName}>GUARDAR</button>
               <button className="clear-btn" onClick={() => setEditing(false)}>CANCELAR</button>
             </div>
@@ -65,7 +69,7 @@ export default function User() {
         </div>
         <div className="user-stat-card">
           <div className="user-stat-num">{heroes.length}</div>
-          <div className="user-stat-label">Héroes totales</div>
+          <div className="user-stat-label">Heroes totales</div>
         </div>
         <div className="user-stat-card">
           <div className="user-stat-num" style={{ color: "var(--good)" }}>{goodCount}</div>
@@ -79,17 +83,20 @@ export default function User() {
 
       {topHero && (
         <div className="user-top-hero">
-          <h3>// HÉROE FAVORITO PRINCIPAL</h3>
+          <h3>// HEROE MAS PODEROSO EN FAVORITOS</h3>
           <div className="top-hero-row">
-            <img src={topHero.images?.sm} alt={topHero.name}
+            <img
+              src={topHero.images?.sm}
+              alt={topHero.name}
               onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                 e.currentTarget.src = "https://placehold.co/60x80?text=?";
-              }} />
+              }}
+            />
             <div>
               <strong>{topHero.name}</strong>
               <p>{topHero.biography?.publisher ?? "—"}</p>
               <p style={{ color: "var(--accent)", marginTop: 4 }}>
-                ⚡ {Object.values(topHero.powerstats ?? {}).reduce((a, b) => a + b, 0)} pts
+                {Object.values(topHero.powerstats ?? {}).reduce((a, b) => a + b, 0)} pts totales
               </p>
             </div>
           </div>
@@ -99,7 +106,7 @@ export default function User() {
       {favorites.length > 0 && (
         <div className="user-breakdown">
           <div className="breakdown-block">
-            <h4>// ALINEACIÓN</h4>
+            <h4>// ALINEACION</h4>
             {[
               { label: "Good",    count: goodCount,    color: "var(--good)" },
               { label: "Bad",     count: badCount,     color: "var(--bad)" },

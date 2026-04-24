@@ -11,13 +11,13 @@ export default function Favorites() {
     <>
       <div className="home-header">
         <h1>Favoritos</h1>
-        <p>{favorites.length} héroe{favorites.length !== 1 ? "s" : ""} guardado{favorites.length !== 1 ? "s" : ""}</p>
+        <p>{favorites.length} heroe{favorites.length !== 1 ? "s" : ""} guardado{favorites.length !== 1 ? "s" : ""}</p>
       </div>
 
       {favorites.length === 0 ? (
         <div className="empty-msg">
-          // LISTA_VACÍA<br />
-          Agrega héroes desde la pantalla de inicio usando ♡
+          // LISTA_VACIA<br />
+          Agrega heroes desde la pantalla de inicio usando el boton de favorito.
         </div>
       ) : (
         <div className="heroes-list">
@@ -25,8 +25,8 @@ export default function Favorites() {
             <span>#</span>
             <span>IMG</span>
             <span>NOMBRE</span>
-            <span>ALINEACIÓN</span>
-            <span>PODER</span>
+            <span>ALINEACION</span>
+            <span>STATS</span>
             <span>FAV</span>
           </div>
           {favorites.map((hero) => (

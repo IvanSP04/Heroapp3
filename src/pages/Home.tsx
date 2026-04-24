@@ -35,13 +35,13 @@ export default function Home() {
     <>
       <div className="home-header">
         <h1>SuperHeroes DB</h1>
-        <p>{filtered.length} / {heroes.length} héroes encontrados</p>
+        <p>{filtered.length} / {heroes.length} heroes encontrados</p>
       </div>
 
       <div className="filters-bar">
         <input
           className="search-input"
-          placeholder="// buscar héroe..."
+          placeholder="// buscar heroe..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -52,7 +52,7 @@ export default function Home() {
         </select>
         <select className="filter-select" value={alignment}
           onChange={(e) => setAlignment(e.target.value)}>
-          <option value="">Alineación</option>
+          <option value="">Alineacion</option>
           {ALIGNMENTS.map((a) => <option key={a} value={a}>{a}</option>)}
         </select>
         <button className="clear-btn" onClick={clearFilters}>LIMPIAR</button>
@@ -61,7 +61,7 @@ export default function Home() {
       {filtered.length === 0 ? (
         <div className="empty-msg">
           // NO_RESULTS<br />
-          Ningún héroe coincide con los filtros aplicados.
+          Ningun heroe coincide con los filtros aplicados.
         </div>
       ) : (
         <div className="heroes-list">
@@ -69,8 +69,8 @@ export default function Home() {
             <span>#</span>
             <span>IMG</span>
             <span>NOMBRE</span>
-            <span>ALINEACIÓN</span>
-            <span>PODER</span>
+            <span>ALINEACION</span>
+            <span>STATS</span>
             <span>FAV</span>
           </div>
           {filtered.map((hero) => (

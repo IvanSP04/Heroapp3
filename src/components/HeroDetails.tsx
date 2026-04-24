@@ -34,9 +34,9 @@ export default function HeroDetail({ hero, onClose }: Props) {
 
   if (!hero) return null;
 
-  const fav = isFavorite(hero.id);
-  const stats = hero.powerstats ?? ({} as Record<string, number>);
-  const alignment = hero.biography?.alignment ?? "neutral";
+  const fav        = isFavorite(hero.id);
+  const stats      = hero.powerstats ?? {};
+  const alignment  = hero.biography?.alignment ?? "neutral";
   const alignColor = ALIGN_COLOR[alignment] ?? "var(--neutral)";
 
   return (
@@ -63,24 +63,33 @@ export default function HeroDetail({ hero, onClose }: Props) {
             <div>
               <div className="detail-name">{hero.name}</div>
               <div className="detail-tag" style={{ color: alignColor, borderColor: alignColor }}>
+                <span style={{
+                  display: "inline-block",
+                  width: 6, height: 6,
+                  borderRadius: "50%",
+                  background: alignColor,
+                  marginRight: 6,
+                  verticalAlign: "middle",
+                }} />
                 {alignment}
               </div>
             </div>
 
             <div className="detail-meta">
-              <div><span>NOMBRE REAL &nbsp;</span>{hero.biography?.fullName ?? "—"}</div>
-              <div><span>EDITORIAL &nbsp;</span>{hero.biography?.publisher ?? "—"}</div>
-              <div><span>PRIMERA APARICIÓN &nbsp;</span>{hero.biography?.firstAppearance ?? "—"}</div>
-              <div><span>LUGAR DE NAC. &nbsp;</span>{hero.biography?.placeOfBirth ?? "—"}</div>
-              <div><span>ALIAS &nbsp;</span>{hero.biography?.aliases?.join(", ") ?? "—"}</div>
-              <div><span>GÉNERO &nbsp;</span>{hero.appearance?.gender ?? "—"}</div>
-              <div><span>RAZA &nbsp;</span>{hero.appearance?.race ?? "—"}</div>
-              <div><span>ALTURA &nbsp;</span>{hero.appearance?.height?.[1] ?? "—"}</div>
-              <div><span>PESO &nbsp;</span>{hero.appearance?.weight?.[1] ?? "—"}</div>
-              <div><span>OJOS &nbsp;</span>{hero.appearance?.eyeColor ?? "—"}</div>
-              <div><span>CABELLO &nbsp;</span>{hero.appearance?.hairColor ?? "—"}</div>
-              <div><span>OCUPACIÓN &nbsp;</span>{hero.work?.occupation ?? "—"}</div>
-              <div><span>GRUPOS &nbsp;</span>{hero.connections?.groupAffiliation ?? "—"}</div>
+              <div><span>NOMBRE REAL </span>{hero.biography?.fullName ?? "—"}</div>
+              <div><span>EDITORIAL </span>{hero.biography?.publisher ?? "—"}</div>
+              <div><span>PRIMERA APARICION </span>{hero.biography?.firstAppearance ?? "—"}</div>
+              <div><span>LUGAR DE NAC. </span>{hero.biography?.placeOfBirth ?? "—"}</div>
+              <div><span>ALIAS </span>{hero.biography?.aliases?.join(", ") ?? "—"}</div>
+              <div><span>GENERO </span>{hero.appearance?.gender ?? "—"}</div>
+              <div><span>RAZA </span>{hero.appearance?.race ?? "—"}</div>
+              <div><span>ALTURA </span>{hero.appearance?.height?.[1] ?? "—"}</div>
+              <div><span>PESO </span>{hero.appearance?.weight?.[1] ?? "—"}</div>
+              <div><span>OJOS </span>{hero.appearance?.eyeColor ?? "—"}</div>
+              <div><span>CABELLO </span>{hero.appearance?.hairColor ?? "—"}</div>
+              <div><span>OCUPACION </span>{hero.work?.occupation ?? "—"}</div>
+              <div><span>BASE </span>{hero.work?.base ?? "—"}</div>
+              <div><span>GRUPOS </span>{hero.connections?.groupAffiliation ?? "—"}</div>
             </div>
 
             <button

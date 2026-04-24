@@ -5,27 +5,26 @@ type Props = {
   onClick: (hero: Hero) => void;
 };
 
+const ALIGN_COLOR: Record<string, string> = {
+  good:    "var(--good)",
+  bad:     "var(--bad)",
+  neutral: "var(--neutral)",
+};
+
 export default function HeroRow({ hero, onClick }: Props) {
   const { toggleFavorite, isFavorite } = useHeroes();
-  const fav = isFavorite(hero.id);
+  const fav       = isFavorite(hero.id);
+  const alignment = hero.biography?.alignment ?? "neutral";
+  const color     = ALIGN_COLOR[alignment] ?? "var(--neutral)";
+  const stats     = hero.powerstats ?? {};
+  const str       = stats.strength     ?? 0;
+  const int       = stats.intelligence ?? 0;
+  const spd       = stats.speed        ?? 0;
 
   function handleFav(e: React.MouseEvent<HTMLButtonElement>) {
     e.stopPropagation();
     toggleFavorite(hero);
   }
-
-  const alignment = hero.biography?.alignment ?? "neutral";
-  const alignColor: Record<string, string> = {
-    good:    "var(--good)",
-    bad:     "var(--bad)",
-    neutral: "var(--neutral)",
-  };
-  const color = alignColor[alignment] ?? "var(--neutral)";
-
-  const stats = hero.powerstats ?? {};
-  const avgPower = Object.keys(stats).length
-    ? Math.round(Object.values(stats).reduce((a, b) => a + b, 0) / Object.values(stats).length)
-    : null;
 
   return (
     <div className="hero-row" onClick={() => onClick(hero)}>
@@ -42,15 +41,26 @@ export default function HeroRow({ hero, onClick }: Props) {
 
       <div className="hero-row-info">
         <span className="hero-row-name">{hero.name}</span>
+        <span className="hero-row-pub">{hero.biography?.fullName ?? "—"}</span>
         <span className="hero-row-pub">{hero.biography?.publisher ?? "—"}</span>
       </div>
 
       <span className="hero-row-tag" style={{ color, borderColor: color }}>
+        <span style={{
+          display: "inline-block",
+          width: 6, height: 6,
+          borderRadius: "50%",
+          background: color,
+          marginRight: 5,
+          verticalAlign: "middle",
+        }} />
         {alignment}
       </span>
 
       <div className="hero-row-stats">
-        {avgPower !== null && <span>⚡ {avgPower}</span>}
+        <span>STR {str}</span>
+        <span>INT {int}</span>
+        <span>SPD {spd}</span>
       </div>
 
       <button
